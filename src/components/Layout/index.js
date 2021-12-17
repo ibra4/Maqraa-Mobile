@@ -15,12 +15,12 @@ const componentStyle = StyleSheet.create({
   },
 });
 
-function Layout({children}) {
+function Layout({children, title}) {
   return (
     <View style={componentStyle.layout}>
       <Header />
       <View style={componentStyle.childContainer}>
-        <MainTitle title="الرئيسية" />
+        <MainTitle title={title} />
         {children}
       </View>
     </View>

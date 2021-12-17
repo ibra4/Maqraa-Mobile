@@ -1,19 +1,23 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Colors from '../../assets/Colors';
 
-const BackButton = () => (
-  <TouchableOpacity style={styles.backWrapper}>
-    <View style={styles.backBar} />
-    <View style={styles.backBar} />
-    <View style={styles.backBar} />
-  </TouchableOpacity>
-);
+const MenuButton = ({openDrawer}) => {
+  return (
+    <TouchableOpacity style={styles.backWrapper} onPress={() => openDrawer()}>
+      <View style={styles.backBar} />
+      <View style={styles.backBar} />
+      <View style={styles.backBar} />
+    </TouchableOpacity>
+  );
+};
 
 function Header() {
+  const navigation = useNavigation();
   return (
     <View style={styles.header}>
-      <BackButton />
+      <MenuButton openDrawer={() => navigation.openDrawer()} />
       <TouchableOpacity style={styles.logoContainer}>
         <Image
           source={require('../../assets/images/logo_base.png')}
@@ -21,7 +25,9 @@ function Header() {
         />
         <Text style={styles.logoText}>مقرأة آل خالدي</Text>
       </TouchableOpacity>
-      <Text>الرجوع</Text>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text>الرجوع</Text>
+      </TouchableOpacity>
     </View>
   );
 }

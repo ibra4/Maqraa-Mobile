@@ -5,7 +5,7 @@ import Home from './Home';
 
 function HomeIndex() {
   return (
-    <Layout>
+    <Layout title="الرئيسية">
       <Home />
     </Layout>
   );
