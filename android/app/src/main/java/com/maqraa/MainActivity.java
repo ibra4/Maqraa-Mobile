@@ -5,6 +5,8 @@ import android.os.Bundle; // here
 import org.devio.rn.splashscreen.SplashScreen; // here
 import com.facebook.react.ReactActivity;
 
+import com.facebook.react.modules.i18nmanager.I18nUtil;
+
 public class MainActivity extends ReactActivity {
 
   /**
@@ -19,6 +21,11 @@ public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
       SplashScreen.show(this);  // here
+
+      I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance();
+      sharedI18nUtilInstance.forceRTL(this,true);
+      sharedI18nUtilInstance.allowRTL(this, true);
+      
       super.onCreate(savedInstanceState);
   }
 }
