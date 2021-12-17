@@ -1,18 +1,15 @@
-import React from 'react'
-import { SafeAreaView, Text } from 'react-native'
-import SplashScreen from 'react-native-splash-screen'
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import SplashScreen from 'react-native-splash-screen';
 
-function App() {
-
+export default function App() {
   React.useEffect(() => {
-    SplashScreen.hide()
-  }, [])
-  
-  return (
-    <SafeAreaView>
-      <Text>Hi</Text>
-    </SafeAreaView>
-  )
-}
+    SplashScreen.hide();
+  }, []);
 
-export default App
+  return (
+    <NavigationContainer>
+      
+    </NavigationContainer>
+  );
+}
