@@ -1,13 +1,18 @@
 import * as React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {createDrawerNavigator, DrawerItemList} from '@react-navigation/drawer';
 import DrawerHeader from '../components/DrawerHeader';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import styles from '../assets/styles';
 import HomeIndex from './Home/HomeIndex';
 import GoalsIndex from './Goals/GoalsIndex';
 import RegistrationIndex from './Registration/RegistrationIndex';
 import PostsIndex from './Posts/PostsIndex';
-import styles from '../assets/styles';
+import SupervisorsIndex from './Supervisors/SupervisorsIndex';
+import TeachersIndex from './Teachers/TeachersIndex';
+import TestimonialsIndex from './Testimonials/TestimonialsIndex';
+import CertificatesIndex from './Certificates/CertificatesIndex';
+import LibraryIndex from './Library/LibraryIndex';
 
 const Drawer = createDrawerNavigator();
 
@@ -19,21 +24,25 @@ function DrawerNavigator() {
         <>
           <DrawerHeader />
           <View style={[styles.yellowBar, {width: '100%'}]} />
-          <DrawerItemList {...props} />
-          <View style={[styles.yellowBar, {width: '100%'}]} />
-          <View>
-            <TouchableOpacity>
-              <Text style={componentStyle.drawerLabelStyle}>القرآن الكريم</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={componentStyle.drawerLabelStyle}>تواصل معنا</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={componentStyle.drawerLabelStyle}>
-                إعدادات التطبيق
-              </Text>
-            </TouchableOpacity>
-          </View>
+          <ScrollView>
+            <DrawerItemList {...props} />
+            <View style={[styles.yellowBar, {width: '100%'}]} />
+            <View>
+              <TouchableOpacity>
+                <Text style={componentStyle.drawerLabelStyle}>
+                  القرآن الكريم
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={componentStyle.drawerLabelStyle}>تواصل معنا</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={componentStyle.drawerLabelStyle}>
+                  إعدادات التطبيق
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
         </>
       )}
       screenOptions={{
@@ -56,12 +65,12 @@ function DrawerNavigator() {
       <Drawer.Screen
         name="Teachers"
         options={{title: 'المعلمين'}}
-        component={HomeIndex}
+        component={TeachersIndex}
       />
       <Drawer.Screen
         name="Supervisors"
         options={{title: 'المشرفين'}}
-        component={HomeIndex}
+        component={SupervisorsIndex}
       />
       <Drawer.Screen
         name="Registration"
@@ -76,7 +85,17 @@ function DrawerNavigator() {
       <Drawer.Screen
         name="Testimonials"
         options={{title: 'التزكيات'}}
-        component={HomeIndex}
+        component={TestimonialsIndex}
+      />
+      <Drawer.Screen
+        name="Certificates"
+        options={{title: 'الشهادات الشهرية'}}
+        component={CertificatesIndex}
+      />
+      <Drawer.Screen
+        name="Library"
+        options={{title: 'المكتبة'}}
+        component={LibraryIndex}
       />
     </Drawer.Navigator>
   );
@@ -85,8 +104,8 @@ function DrawerNavigator() {
 export default DrawerNavigator;
 
 const componentStyle = StyleSheet.create({
-    drawerLabelStyle: {
-      ...styles.drawerLabelStyle,
-      padding: 15,
-    },
-  });
+  drawerLabelStyle: {
+    ...styles.drawerLabelStyle,
+    padding: 15,
+  },
+});
